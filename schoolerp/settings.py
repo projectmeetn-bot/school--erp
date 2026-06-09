@@ -26,7 +26,10 @@ SECRET_KEY = 'django-insecure-!7=b#mua@occq#bsc$7wyrtzj1k8dr0%x2#h%=k=vsn%rd&#1p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'school-erp-ns3g.onrender.com/',
+    'localhost',
+    '127.0.0.1']
 
 
 # Application definition
