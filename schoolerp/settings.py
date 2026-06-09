@@ -24,12 +24,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-!7=b#mua@occq#bsc$7wyrtzj1k8dr0%x2#h%=k=vsn%rd&#1p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'school-erp-ns3g.onrender.com/',
     'localhost',
     '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = [
+    'https://school-erp-ns3g.onrender.com'
+]
 
 
 # Application definition
