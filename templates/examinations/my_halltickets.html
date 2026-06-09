@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+<h3>My Hall Tickets</h3>
+
+<table class="table table-bordered">
+
+<tr>
+    <th>Hall Ticket No</th>
+    <th>Exam</th>
+    <th>Download</th>
+</tr>
+
+{% for ticket in tickets %}
+<tr>
+
+<td>{{ ticket.hall_ticket_number }}</td>
+
+<td>
+{{ ticket.application.examination.exam_name }}
+</td>
+
+<td>
+
+<a href="{% url 'hallticket_pdf' ticket.id %}"
+   class="btn btn-success">
+
+Download PDF
+
+</a>
+
+</td>
+
+</tr>
+{% endfor %}
+
+</table>
+
+</div>
+
+{% endblock %}

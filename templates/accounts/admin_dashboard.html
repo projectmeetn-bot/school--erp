@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Admin Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <h2 class="mb-4">Admin Dashboard</h2>
+
+    <div class="row">
+
+        <div class="col-md-3 mb-3">
+            <a href="{% url 'student_list' %}" style="text-decoration:none;">
+                <div class="card text-center shadow">
+                    <div class="card-body">
+                        <h5>Students</h5>
+                        <h2>{{ student_count|default:"0" }}</h2>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card text-center shadow">
+                <div class="card-body">
+                    <h5>Teachers</h5>
+                    <h2>{{ teacher_count|default:"0" }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card text-center shadow">
+                <div class="card-body">
+                    <h5>Subjects</h5>
+                    <h2>{{ subject_count|default:"0" }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card text-center shadow">
+                <div class="card-body">
+                    <h5>Classes</h5>
+                    <h2>{{ class_count|default:"0" }}</h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card shadow">
+        <div class="card-header">
+            School ERP System
+        </div>
+
+        <div class="card-body">
+            <h5>Welcome {{ user.username }}</h5>
+            <p>You are logged in as Administrator.</p>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h3>Exam Applications</h3>
+
+    <table class="table table-bordered">
+
+        <thead class="table-dark">
+
+            <tr>
+                <th>Student</th>
+                <th>Exam</th>
+                <th>Attendance</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for application in applications %}
+
+            <tr>
+
+                <td>
+                    {{ application.student.name }}
+                </td>
+
+                <td>
+                    {{ application.examination }}
+                </td>
+
+                <td>
+                    {{ application.attendance_percentage }}%
+                </td>
+
+                <td>
+                    {{ application.status }}
+                </td>
+
+                <td>
+
+                    {% if application.status == 'Pending' %}
+
+                    <a href="{% url 'approve_application' application.id %}"
+                       class="btn btn-success btn-sm">
+                        Approve
+                    </a>
+
+                    <a href="{% url 'reject_application' application.id %}"
+                       class="btn btn-danger btn-sm">
+                        Reject
+                    </a>
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+        {% empty %}
+
+            <tr>
+                <td colspan="5">
+                    No Applications Found
+                </td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

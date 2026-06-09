@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2>Classrooms</h2>
+
+    <a href="{% url 'classroom_add' %}"
+       class="btn btn-primary mb-3">
+       Add Classroom
+    </a>
+
+    <table class="table table-bordered">
+
+        <tr>
+            <th>ID</th>
+            <th>Standard</th>
+            <th>Division</th>
+            <th>Class Teacher</th>
+            <th>Action</th>
+        </tr>
+
+        {% for classroom in classrooms %}
+
+        <tr>
+
+            <td>{{ classroom.id }}</td>
+
+            <td>{{ classroom.standard }}</td>
+
+            <td>{{ classroom.division }}</td>
+
+            <td>{{ classroom.class_teacher }}</td>
+
+            <td>
+
+                <a href="{% url 'classroom_update' classroom.id %}"
+                   class="btn btn-warning btn-sm">
+                   Edit
+                </a>
+
+                <a href="{% url 'classroom_delete' classroom.id %}"
+                   class="btn btn-danger btn-sm">
+                   Delete
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+{% endblock %}

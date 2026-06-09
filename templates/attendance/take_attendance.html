@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Take Attendance
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header">
+            <h3>Take Attendance</h3>
+        </div>
+
+        <div class="card-body">
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="row mb-3">
+
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            Select Class
+                        </label>
+
+                        <select
+                            name="classroom"
+                            id="classroom"
+                            class="form-select">
+
+                            <option value="">
+                                Select Class
+                            </option>
+
+                            {% for classroom in classrooms %}
+                            <option value="{{ classroom.id }}">
+                                {{ classroom }}
+                            </option>
+                            {% endfor %}
+
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            Attendance Date
+                        </label>
+
+                        <input
+                            type="date"
+                            name="date"
+                            class="form-control"
+                            required>
+                    </div>
+
+                </div>
+
+                <table class="table table-bordered">
+
+                    <thead>
+
+                        <tr>
+                            <th>Roll No</th>
+                            <th>Student Name</th>
+                            <th>Status</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="studentTable">
+
+                    </tbody>
+
+                </table>
+
+                <button
+                    type="submit"
+                    class="btn btn-success">
+                    Save Attendance
+                </button>
+
+                <a href="{% url 'attendance_list' %}"
+                   class="btn btn-secondary">
+                    Back
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+document.getElementById('classroom').addEventListener(
+'change',
+function(){
+
+    let classroomId = this.value;
+
+    fetch(
+        '/attendance/students/?classroom='
+        + classroomId
+    )
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        let rows = '';
+
+        data.forEach(student => {
+
+            rows += `
+            <tr>
+
+                <td>
+                    ${student.roll_no}
+                </td>
+
+                <td>
+                    ${student.name}
+                </td>
+
+                <td>
+
+                    <select
+                        name="student_${student.id}"
+                        class="form-select">
+
+                        <option value="Present">
+                            Present
+                        </option>
+
+                        <option value="Absent">
+                            Absent
+                        </option>
+
+                        <option value="Leave">
+                            Leave
+                        </option>
+
+                    </select>
+
+                </td>
+
+            </tr>
+            `;
+
+        });
+
+        document.getElementById(
+            'studentTable'
+        ).innerHTML = rows;
+
+    });
+
+});
+
+</script>
+
+{% endblock %}

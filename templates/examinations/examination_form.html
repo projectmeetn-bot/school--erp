@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Examination Form
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="container mt-4">
+
+
+    <div class="row justify-content-center">
+
+
+        <div class="col-md-8">
+
+
+            <div class="card shadow">
+
+
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">📘 Examination Form</h4>
+                </div>
+
+
+                <div class="card-body">
+
+
+                    <form method="POST">
+                        {% csrf_token %}
+
+
+                        <div class="mb-3">
+                            <label class="form-label">Exam Name</label>
+                            {{ form.exam_name }}
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label class="form-label">Exam Type</label>
+                            {{ form.exam_type }}
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label class="form-label">Classroom</label>
+                            {{ form.classroom }}
+                        </div>
+
+
+                        <div class="row">
+
+
+                            <div class="col-md-4">
+                                <label class="form-label">Start Date</label>
+                                {{ form.start_date }}
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <label class="form-label">End Date</label>
+                                {{ form.end_date }}
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <label class="form-label">Last Form Date</label>
+                                {{ form.form_last_date }}
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="form-check mt-3">
+                            {{ form.is_active }}
+                            <label class="form-check-label">
+                                Active Examination
+                            </label>
+                        </div>
+
+
+                        <hr>
+
+
+                        <button type="submit"
+                                class="btn btn-success">
+                            Save
+                        </button>
+
+
+                        <a href="{% url 'examination_list' %}"
+                           class="btn btn-secondary">
+                            Cancel
+                        </a>
+
+
+                        <a href="{% url 'home_redirect' %}"
+                           class="btn btn-primary float-end">
+                            Dashboard
+                        </a>
+
+
+                    </form>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

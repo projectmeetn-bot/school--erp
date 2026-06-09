@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+<div class="card">
+
+<div class="card-header">
+    <h3>{{ classroom }} Timetable</h3>
+</div>
+
+<div class="card-body">
+
+<table class="table table-bordered">
+
+<tr>
+    <th>Day</th>
+    <th>Subject</th>
+    <th>Teacher</th>
+    <th>Start Time</th>
+    <th>End Time</th>
+    <th>Action</th>
+</tr>
+
+{% for item in timetable %}
+
+<tr>
+
+    <td>{{ item.day }}</td>
+
+    <td>{{ item.subject }}</td>
+
+    <td>{{ item.teacher }}</td>
+
+    <td>{{ item.start_time }}</td>
+
+    <td>{{ item.end_time }}</td>
+
+    <td>
+
+        <a href="{% url 'timetable_edit' item.id %}"
+           class="btn btn-warning btn-sm">
+            Edit
+        </a>
+
+        <a href="{% url 'timetable_delete' item.id %}"
+           class="btn btn-danger btn-sm">
+            Delete
+        </a>
+
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<a href="{% url 'timetable_list' %}"
+   class="btn btn-secondary">
+    Back
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

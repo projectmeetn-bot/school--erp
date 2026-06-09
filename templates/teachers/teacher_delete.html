@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card shadow mt-4">
+
+    <div class="card-header bg-danger text-white">
+        Delete Teachers
+    </div>
+
+    <div class="card-body">
+
+        <h5>
+            Are you sure you want to delete
+            "{{ teacher.name }}" ?
+        </h5>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <button type="submit"
+                    class="btn btn-danger">
+                Yes Delete
+            </button>
+
+            <a href="{% url 'teacher_list' %}"
+               class="btn btn-secondary">
+                Cancel
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

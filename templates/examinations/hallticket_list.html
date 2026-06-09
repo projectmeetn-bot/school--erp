@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Hall Tickets</h2>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>Hall Ticket No</th>
+        <th>Student</th>
+        <th>Exam</th>
+        <th>Issue Date</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for ticket in tickets %}
+    <tr>
+
+        <td>{{ ticket.hall_ticket_number }}</td>
+
+        <td>{{ ticket.application.student }}</td>
+
+        <td>{{ ticket.application.examination }}</td>
+
+        <td>{{ ticket.issue_date }}</td>
+
+        <td>
+
+            <a href="{% url 'hallticket_pdf' ticket.id %}"
+               class="btn btn-primary btn-sm">
+                PDF
+            </a>
+
+            <a href="{% url 'hallticket_delete' ticket.id %}"
+               class="btn btn-danger btn-sm">
+                Delete
+            </a>
+
+        </td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

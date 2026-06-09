@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Teacher Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <h2 class="mb-4">Teacher Dashboard</h2>
+
+    <div class="row">
+
+        <div class="col-md-4 mb-3">
+            <a href="{% url 'student_list' %}" style="text-decoration:none;">
+                <div class="card shadow text-center">
+                    <div class="card-body">
+                        <h5>Total Students</h5>
+                        <h2>{{ student_count|default:"0" }}</h2>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h5>Total Subjects</h5>
+                    <h2>{{ subject_count|default:"0" }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card shadow text-center">
+                <div class="card-body">
+                    <h5>Total Classes</h5>
+                    <h2>{{ class_count|default:"0" }}</h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card shadow">
+        <div class="card-header">
+            Teacher Information
+        </div>
+
+        <div class="card-body">
+            <h5>Welcome {{ user.username }}</h5>
+            <p>You are logged in as Teacher.</p>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

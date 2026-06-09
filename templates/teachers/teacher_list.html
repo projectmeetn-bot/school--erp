@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Teachers</h2>
+
+<a href="{% url 'teacher_add' %}"
+   class="btn btn-primary mb-3">
+    Add Teacher
+</a>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>ID</th>
+        <th>Teacher ID</th>
+        <th>Name</th>
+        <th>Date Of Joining</th>
+        <th>Action</th>
+    </tr>
+
+    {% for teacher in teachers %}
+
+    <tr>
+        <td>{{ teacher.id }}</td>
+        <td>{{ teacher.teacher_id }}</td>
+        <td>{{ teacher.name }}</td>
+        <td>{{ teacher.date_of_joining }}</td>
+
+        <td>
+
+            <a href="{% url 'teacher_update' teacher.id %}"
+               class="btn btn-warning btn-sm">
+                Edit
+            </a>
+
+            <a href="{% url 'teacher_delete' teacher.id %}"
+               class="btn btn-danger btn-sm">
+                Delete
+            </a>
+
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

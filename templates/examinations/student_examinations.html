@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h3>Available Examinations</h3>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>Exam</th>
+            <th>Type</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Action</th>
+        </tr>
+
+        {% for exam in examinations %}
+        <tr>
+            <td>{{ exam.exam_name }}</td>
+            <td>{{ exam.exam_type }}</td>
+            <td>{{ exam.start_date }}</td>
+            <td>{{ exam.end_date }}</td>
+
+            <td>
+                <a href="{% url 'apply_exam' exam.id %}"
+                   class="btn btn-primary">
+                    Apply
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,177 @@
+<div class="sidebar">
+
+    {% if user.role == 'admin' %}
+
+        <a href="{% url 'admin_dashboard' %}">
+            Dashboard
+        </a>
+
+        <a href="{% url 'student_list' %}">
+            Students
+        </a>
+
+        <a href="{% url 'teacher_list' %}">
+            Teachers
+        </a>
+
+        <a href="{% url 'subject_list' %}">
+            Subjects
+        </a>
+
+        <a href="{% url 'classroom_list' %}">
+            Classes
+        </a>
+
+        <a href="{% url 'attendance_list' %}">
+            Attendance
+        </a>
+
+        <a href="{% url 'timetable_list' %}">
+            Timetable
+        </a>
+
+        <a href="{% url 'announcement_list' %}">
+            Announcements
+        </a>
+
+        <div class="dropdown">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white"
+                    href="#"
+                    data-bs-toggle="dropdown">
+                        Examinations
+                    </a>
+
+
+                    <ul class="dropdown-menu bg-dark">
+                        <li>
+                            <a class="dropdown-item text-white"
+                            href="{% url 'examination_list' %}">
+                            Exam List
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a class="dropdown-item text-white"
+                            href="{% url 'application_list' %}">
+                            Applications
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a class="dropdown-item text-white"
+                            href="{% url 'hallticket_list' %}">
+                            Hall Tickets
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+        </div>
+
+        <a href="#">
+            Results
+        </a>
+
+        <a href="#">
+            Profile
+        </a>
+
+    {% elif user.role == 'teacher' %}
+
+        <a href="{% url 'teacher_dashboard' %}">
+            Dashboard
+        </a>
+
+        <a href="{% url 'student_list' %}">
+            Students
+        </a>
+
+        <a href="{% url 'examination_list' %}">
+            Examinations
+        </a>
+
+        <a href="{% url 'application_list' %}">
+            Exam Appliction
+        </a>
+
+        <a href="#">
+            Subjects
+        </a>
+
+        <a href="#">
+            Attendance
+        </a>
+
+        <a href="#">
+            Timetable
+        </a>
+
+        <a href="#">
+            Results
+        </a>
+
+        <a href="#">
+            Profile
+        </a>
+
+    {% elif user.role == 'student' %}
+
+        <a href="{% url 'student_dashboard' %}">
+            Dashboard
+        </a>
+
+        <a href="#">
+            Profile
+        </a>
+
+        <a href="#">
+            Timetable
+        </a>
+
+        <a href="#">
+            Teachers
+        </a>
+
+        <div class="dropdown">
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="collapse"
+                    href="#studentExam">
+
+                    Examinations
+
+                    </a>
+
+                    <div class="collapse" id="studentExam">
+
+                        <a class="nav-link"
+                        href="{% url 'student_examinations' %}">
+                        Available Examinations
+                        </a>
+
+                        <a class="nav-link"
+                        href="{% url 'my_applications' %}">
+                        My Applications
+                        </a>
+
+                        <a class="nav-link"
+                        href="{% url 'my_halltickets' %}">
+                        My Hall Tickets
+                        </a>
+
+                    </div>
+                </li>
+        </div>
+
+        <a href="#">
+            Announcements
+        </a>
+
+        <a href="#">
+            Results
+        </a>
+
+    {% endif %}
+
+</div>

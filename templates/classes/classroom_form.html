@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+            <h4>Add Classroom</h4>
+        </div>
+
+        <div class="card-body">
+
+            <form method="post">
+
+                {% csrf_token %}
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <label>Standard</label>
+                        {{ form.standard }}
+                    </div>
+
+                    <div class="col-md-4">
+                        <label>Division</label>
+                        {{ form.division }}
+                    </div>
+
+                    <div class="col-md-4">
+                        <label>Class Teacher</label>
+                        {{ form.class_teacher }}
+                    </div>
+
+                </div>
+
+                <br>
+
+                <button
+                    type="submit"
+                    class="btn btn-success">
+                    Save
+                </button>
+
+                <a href="{% url 'classroom_list' %}"
+                   class="btn btn-secondary">
+                    Cancel
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
