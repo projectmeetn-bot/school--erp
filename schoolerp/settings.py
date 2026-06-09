@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'schoolerp.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get()
+        default=os.environ.get('DATABASE_URL')
     )
 }
 
